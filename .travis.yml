@@ -1,9 +1,11 @@
+language: generic
 sudo: required # super user permissions
+
 services:
   - docker
  
- before_install:
-   - docker build -t hades12/docker-react-test -f Dockerfile.dev .
+before_install:
+  - docker build -t hades12/docker-react-test -f Dockerfile.dev .
    
- script:
-   - docker run hades12/docker-react-test npm run test -- --coverage
+script:
+  - docker run hades12/docker-react-test npm run test -- --coverage
