@@ -8,4 +8,16 @@ before_install:
   - docker build -t hades12/docker-react-test -f Dockerfile.dev .
    
 script:
-  - docker run hades12/docker-react-test npm run test -- --coverage
+  - docker run -e CI=true hades12/docker-react-test npm run test #-- --coverage
+  
+#deploy:
+#  provider: elasticbeanstalk
+#  region: "us-east-2"
+#  app: "docker"
+#  env: "docker-env"
+#  bucket_name: "elasticbeanstalk-us-east-2-923445559289"
+#  bucket_path: "docker"
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY
